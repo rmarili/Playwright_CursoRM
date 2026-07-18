@@ -9,10 +9,10 @@ export interface User{
     description?: string;
 }
 
-export interface Marker{
+export interface Market{
     code: CountryCode;
     currency: Currency;
-    fullname: string;
+    fullName: string;
     country: string;
     phone: string;
     address: string;
