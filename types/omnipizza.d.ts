@@ -1,5 +1,5 @@
 export type CountryCode = "MX" | "US" | "CH" | "JP"
-export type Currency = "MXN" | "USD" | "CHF" | "JYP"
+export type Currency = "MXN" | "USD" | "CHF" | "JPY"
 export type Currency = "Customer" 
 
 export interface User{

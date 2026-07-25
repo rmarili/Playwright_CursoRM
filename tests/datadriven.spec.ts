@@ -19,7 +19,7 @@ if(!standardUser){
 
 const currencySymbol: Partial<Record<Currency, string>> = {
     MXN: "$",
-    JYP: "￥"
+    JPY: "￥"
 }
  
 test.describe("Smoke parametrized by market", () => {
