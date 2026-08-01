@@ -245,4 +245,6 @@ $RECICLAJE.CONTENEDOR/
 # Accesos directos de Windows
 *.lnk
 
+.auth/
+
 # Fin de https://www.toptal.com/developers/gitignore/api/macos,windows,linux,node,visualstudiocode
