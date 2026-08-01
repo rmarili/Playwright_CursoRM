@@ -49,6 +49,7 @@
     "module-*/**/*.ts",
     "types/**/*.d.ts",
     "pages/**/*.ts",
+    "fixtures/**/*.ts"
    
   ]
 }

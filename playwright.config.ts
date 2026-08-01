@@ -1,4 +1,4 @@
-import { defineConfig, devices, test } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -14,7 +14,7 @@ import "dotenv/config";
  */
 export default defineConfig({
   testDir: '.',
-  testMatch: [/tests\/.*\.spec\.ts/, /module-.*\/.*\.spec\.ts/],
+ // testMatch: [/tests\/.*\.spec\.ts/, /module-.*\/.*\.spec\.ts/], 
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -26,8 +26,8 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [["html", { open: "always"}], ["list"]],
 
-  timeout: 30_000, //antes que se ejecute un clic
-  expect: { timeout: 15_000}, // cuanto estamos en la aserción cuanto debo esperar yo
+  timeout: 30_000,
+  expect: { timeout: 10_000},
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -37,15 +37,22 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: "only-on-failure",
     video: "retain-on-failure",
-    navigationTimeout: 45_000, // tiempo entre una pagina y otra
+    navigationTimeout: 45_000,
     headless: process.env.HEADLESS === "true" ? true : false,
-
   },
 
   /* Configure projects for major browsers */
   projects: [
+    {name: "setup", testMatch: /.*\.setup\.ts/},
+
     {
-      name: 'chromium',
+      name: "chromium",
+      use: {...devices['Desktop Chrome'], storageState: ".auth/user.json"},
+      dependencies: ["setup"],
+      testMatch: [/tests\/.*\.spec\.ts/]
+    }
+    /* {
+      name: 'ui-chromium',
       use: { ...devices['Desktop Chrome'] },
     },
 
@@ -57,7 +64,7 @@ export default defineConfig({
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-    },
+    }, */
 
     /* Test against mobile viewports. */
     // {
@@ -74,10 +81,12 @@ export default defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    /* {
+      name: 'Google Chrome',
+      use: { ...devices['Desktop Chrome'], 
+        channel: 'chrome-canary' },
+
+    }, */
   ],
 
   /* Run your local dev server before starting the tests */
