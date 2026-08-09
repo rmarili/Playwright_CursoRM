@@ -6,10 +6,10 @@ import {
     CheckoutPage,
     ProfilePage,
     PizzaCustomizerModal,
-} from "../pages";
-import { Market, User, Currency } from "../types";
-import marketJson from "../data/markets.json" with {type: "json"};
-import usersJson from "../data/users.json" with {type: "json"};
+} from "../../pages";
+import { Market, User, Currency } from "../../types";
+import marketJson from "../../data/markets.json" with {type: "json"};
+import usersJson from "../../data/users.json" with {type: "json"};
 
 const markets = marketJson as Market[];
 const users = usersJson as User[];
