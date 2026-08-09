@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { Market, User, Currency} from "../types";
-import marketJson from "../data/markets.json" with {type: "json"};
-import userJson from "../data/users.json" with {type: "json"};
+import { Market, User, Currency} from "../../types";
+import marketJson from "../../data/markets.json" with {type: "json"};
+import userJson from "../../data/users.json" with {type: "json"};
 
 
 

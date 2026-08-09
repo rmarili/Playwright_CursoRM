@@ -1,4 +1,4 @@
-import { test } from "../fixtures/omnipizza";
+import { test } from "../../fixtures/omnipizza";
 
 test.describe("setup & auth", ()=>{
     test("lands on /catalog", async({page, catalogPage}) =>{
